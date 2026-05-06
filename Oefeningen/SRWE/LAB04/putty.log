@@ -1,0 +1,1803 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2026.03.18 10:20:53 =~=~=~=~=~=~=~=~=~=~=~=
+
+
+User Access Verification
+
+Password: 
+Password: 
+Switch>en
+Password: 
+*Mar 18 09:21:04.994: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/20, changed state to up
+*Mar 18 09:21:05.993: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/20, changed state to up
+Switch#
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#service timestamps debug datetime msec
+Switch(config)#service timestamps log datetime msec
+Switch(config)#service password-encryption
+Switch(config)#!
+Switch(config)#hostname LAB-RA06-A02-SW01
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4         P.TYaVwZNo5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4         iCnm.jQI/dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5         zV50w
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#no ip domain lookup
+LAB-RA06-A02-SW01(config)#ip domain name data.labnet.local
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#login on-success log
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#vlan 65
+LAB-RA06-A02-SW01(config-vlan)# name Management
+LAB-RA06-A02-SW01(config-vlan)#vlan 66
+LAB-RA06-A02-SW01(config-vlan)# name Data_Users
+LAB-RA06-A02-SW01(config-vlan)#vlan 67
+LAB-RA06-A02-SW01(config-vlan)# name Voice_Users
+LAB-RA06-A02-SW01(config-vlan)#vlan 68
+LAB-RA06-A02-SW01(config-vlan)# name Reserved
+LAB-RA06-A02-SW01(config-vlan)#vlan 99
+LAB-RA06-A02-SW01(config-vlan)# name Native
+LAB-RA06-A02-SW01(config-vlan)#!
+LAB-RA06-A02-SW01(config-vlan)#spanning-tree mode rapid-pvst
+Warning: Changing STP mode can disrupt the traffic and make system unstable
+Recommend to change STP mode only during maintenance window
+LAB-RA06-A02-SW01(config)#spanning-tree extend system-id
+LAB-RA06-A02-SW01(config)#spanning-tree vlan 65,66,67,68,99 root primary
+LAB-RA06-A02-SW01(config)#username admin privilege 15 secret 9 $9$Q1t0hJk90gY$min privilege 15 secret 9 $9$Q1t0hJk90gY2         kk$zLvy5Eege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5EO         syArwVffvret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVffve         VoVQoj/CT1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/CTo         8oOZ4XVuH2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVuHv         gEXEy6
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#interface GigabitEthernet0/0
+LAB-RA06-A02-SW01(config-if)# vrf forwarding Mgmt-vrf
+LAB-RA06-A02-SW01(config-if)# no ip address
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/1
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/1 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/2
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/2 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/3
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/3 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/4
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/4 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/5
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/5 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/6
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/6 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/7
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/7 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/8
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/8 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/9
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/9 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/10
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/10 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/11
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/11 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/12
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/12 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/13
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/13 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/14
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/14 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/15
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/15 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/16
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/16 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/17
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/17 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/18
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/18 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/19
+LAB-RA06-A02-SW01(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW01(config-if)# switchport mode access
+LAB-RA06-A02-SW01(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/19 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW01(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/0/20
+LAB-RA06-A02-SW01(config-if)# switchport mode trunk
+LAB-RA06-A02-SW01(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW01(config-if)# switchport trunk allowed vlan 65,66,67,68
+LAB-RA06-A02-SW01(config-if)# no shutdown
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/1/1
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/1/2
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/1/3
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface GigabitEthernet1/1/4
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface Vlan1
+LAB-RA06-A02-SW01(config-if)# no ip address
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#interface Vlan65
+LAB-RA06-A02-SW01(config-if)# ip address 172.17.6.68 255.255.255.240
+LAB-RA06-A02-SW01(config-if)# no shutdown
+LAB-RA06-A02-SW01(config-if)#!
+LAB-RA06-A02-SW01(config-if)#ip default-gateway 172.17.6.65
+LAB-RA06-A02-SW01(config)#ip forward-protocol nd
+LAB-RA06-A02-SW01(config)#ip ssh version 2
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#!
+LAB-RA06-A02-SW01(config)#control-plane
+LAB-RA06-A02-SW01(config-cp)# service-policy input system-cpp-policy
+LAB-RA06-A02-SW01(config-cp)#!
+LAB-RA06-A02-SW01(config-cp)#!
+LAB-RA06-A02-SW01(config-cp)#line con 0
+LAB-RA06-A02-SW01(config-line)# password 7 1306181C1803082F
+LAB-RA06-A02-SW01(config-line)# login
+LAB-RA06-A02-SW01(config-line)# stopbits 1
+LAB-RA06-A02-SW01(config-line)#line aux 0
+LAB-RA06-A02-SW01(config-line)#line vty 0 4
+LAB-RA06-A02-SW01(config-line)# login local
+LAB-RA06-A02-SW01(config-line)# transport input ssh
+LAB-RA06-A02-SW01(config-line)#line vty 5 15
+LAB-RA06-A02-SW01(config-line)# login local
+LAB-RA06-A02-SW01(config-line)# transport input ssh
+LAB-RA06-A02-SW01(config-line)#!
+LAB-RA06-A02-SW01(config-line)#ntp server 10.199.64.66
+LAB-RA06-A02-SW01(config)#
+LAB-RA06-A02-SW01(config)#
+LAB-RA06-A02-SW01(config)#! ETHERCHANNEL TO SWITCH 2
+LAB-RA06-A02-SW01(config)#interface range gi1/0/21 - 22
+LAB-RA06-A02-SW01(config-if-range)# channel-group 1 mode on
+Creating a port-channel interface Port-channel 1
+
+LAB-RA06-A02-SW01(config-if-range)# no shutdown
+LAB-RA06-A02-SW01(config-if-range)#exit
+LAB-RA06-A02-SW01(config)#
+LAB-RA06-A02-SW01(config)#interface port-channel1
+LAB-RA06-A02-SW01(config-if)# switchport mode trunk
+LAB-RA06-A02-SW01(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW01(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW01(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW01(config-if)# no shutdown
+LAB-RA06-A02-SW01(config-if)#
+LAB-RA06-A02-SW01(config-if)#! ETHERCHANNEL TO SWITCH 3
+LAB-RA06-A02-SW01(config-if)#interface range gi1/0/23 - 24
+LAB-RA06-A02-SW01(config-if-range)# channel-group 2 mode on
+Creating a port-channel interface Port-channel 2
+
+LAB-RA06-A02-SW01(config-if-range)# no shutdown
+LAB-RA06-A02-SW01(config-if-range)#exit
+LAB-RA06-A02-SW01(config)#
+LAB-RA06-A02-SW01(config)#interface port-channel2
+LAB-RA06-A02-SW01(config-if)# switchport mode trunk
+LAB-RA06-A02-SW01(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW01(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW01(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW01(config-if)# no shutdown
+LAB-RA06-A02-SW01(config-if)#end
+*Mar 18 09:21:21.303: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/20, changed state to down
+*Mar 18 09:21:21.305: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan65, changed state to down
+*Mar 18 09:21:21.997: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/21, changed state to down
+*Mar 18 09:21:22.393: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/22, changed state to down
+*Mar 18 09:21:22.477: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/23, changed state to down
+*Mar 18 09:21:22.490: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/24, changed state to down
+*Mar 18 09:21:24.122: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/20, changed state to up
+*Mar 18 09:21:24.479: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
+*Mar 18 09:21:25.436: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/21, changed state to up
+*Mar 18 09:21:25.455: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:25.455: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/22, changed state to up
+*Mar 18 09:21:25.516: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:25.522: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/23, changed state to up
+*Mar 18 09:21:25.525: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/24, changed state to up
+*Mar 18 09:21:25.552: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:25.812: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:26.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:26.435: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up
+*Mar 18 09:21:26.441: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:26.517: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:26.518: %LINK-3-UPDOWN: Interface Port-channel2, changed state to up
+*Mar 18 09:21:26.550: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:27.433: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel1, changed state to up
+*Mar 18 09:21:27.436: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:27.437: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:27.515: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:27.522: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel2, changed state to up
+*Mar 18 09:21:27.552: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:28.433: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:28.441: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:28.514: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:28.550: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:29.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:29.442: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:29.516: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:29.552: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:30.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:30.442: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:30.516: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:30.552: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:31.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:31.441: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:31.515: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:31.550: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:32.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:32.441: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:32.516: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:32.550: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:33.434: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:33.441: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/22 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:33.514: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/21 (1).
+*Mar 18 09:21:33.551: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/22 (1).
+*Mar 18 09:21:34.435: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (99), with Switch GigabitEthernet1/0/21 (1).
+LAB-RA06-A02-SW01#
+LAB-RA06-A02-SW01#
+*Mar 18 09:21:38.674: %SYS-5-CONFIG_I: Configured from console by console
+LAB-RA06-A02-SW01#
+
+User Access Verification
+
+Password: 
+Switch>en
+Password: 
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#service timestamps debug datetime msec
+Switch(config)#service timestamps log datetime msec
+Switch(config)#service password-encryption
+Switch(config)#!
+Switch(config)#hostname LAB-RA06-A02-SW02
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4         P.TYaVwZNo5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4         iCnm.jQI/dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5         zV50w
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#no ip domain lookup
+LAB-RA06-A02-SW02(config)#ip domain name data.labnet.local
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#login on-success log
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#vlan 65
+LAB-RA06-A02-SW02(config-vlan)# name Management
+LAB-RA06-A02-SW02(config-vlan)#vlan 66
+LAB-RA06-A02-SW02(config-vlan)# name Data_Users
+LAB-RA06-A02-SW02(config-vlan)#vlan 67
+LAB-RA06-A02-SW02(config-vlan)# name Voice_Users
+LAB-RA06-A02-SW02(config-vlan)#vlan 68
+LAB-RA06-A02-SW02(config-vlan)# name Reserved
+LAB-RA06-A02-SW02(config-vlan)#vlan 99
+LAB-RA06-A02-SW02(config-vlan)# name Native
+LAB-RA06-A02-SW02(config-vlan)#!
+LAB-RA06-A02-SW02(config-vlan)#spanning-tree mode rapid-pvst
+Warning: Changing STP mode can disrupt the traffic and make system unstable
+Recommend to change STP mode only during maintenance window
+LAB-RA06-A02-SW02(config)#spanning-tree extend system-id
+LAB-RA06-A02-SW02(config)#spanning-tree vlan 65,66,67,68,99 root secondary
+LAB-RA06-A02-SW02(config)#username admin privilege 15 secret 9 $9$Q1t0hJk90gY$min privilege 15 secret 9 $9$Q1t0hJk90gY2         kk$zLvy5Eege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5EO         syArwVffvret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVffve         VoVQoj/CT1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/CTo         8oOZ4XVuH2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVuHv         gEXEy6
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#interface GigabitEthernet0/0
+LAB-RA06-A02-SW02(config-if)# vrf forwarding Mgmt-vrf
+LAB-RA06-A02-SW02(config-if)# no ip address
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/1
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/1 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/2
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/2 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/3
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/3 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/4
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/4 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/5
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/5 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/6
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/6 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/7
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/7 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/8
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/8 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/9
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/9 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/10
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/10 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/11
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/11 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/12
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/12 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/13
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/13 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/14
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/14 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/15
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/15 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/16
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/16 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/17
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/17 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/18
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/18 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/19
+LAB-RA06-A02-SW02(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW02(config-if)# switchport mode access
+LAB-RA06-A02-SW02(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/19 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW02(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/0/20
+LAB-RA06-A02-SW02(config-if)# switchport mode trunk
+LAB-RA06-A02-SW02(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW02(config-if)# switchport trunk allowed vlan 65,66,67,68
+LAB-RA06-A02-SW02(config-if)# no shutdown
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/1/1
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/1/2
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/1/3
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface GigabitEthernet1/1/4
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface Vlan1
+LAB-RA06-A02-SW02(config-if)# no ip address
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#interface Vlan65
+LAB-RA06-A02-SW02(config-if)# ip address 172.17.6.69 255.255.255.240
+LAB-RA06-A02-SW02(config-if)# no shutdown
+LAB-RA06-A02-SW02(config-if)#!
+LAB-RA06-A02-SW02(config-if)#ip default-gateway 172.17.6.65
+LAB-RA06-A02-SW02(config)#ip forward-protocol nd
+LAB-RA06-A02-SW02(config)#ip ssh version 2
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#!
+LAB-RA06-A02-SW02(config)#control-plane
+LAB-RA06-A02-SW02(config-cp)# service-policy input system-cpp-policy
+LAB-RA06-A02-SW02(config-cp)#!
+LAB-RA06-A02-SW02(config-cp)#!
+LAB-RA06-A02-SW02(config-cp)#line con 0
+LAB-RA06-A02-SW02(config-line)# password 7 1306181C1803082F
+LAB-RA06-A02-SW02(config-line)# login
+LAB-RA06-A02-SW02(config-line)# stopbits 1
+LAB-RA06-A02-SW02(config-line)#line aux 0
+LAB-RA06-A02-SW02(config-line)#line vty 0 4
+LAB-RA06-A02-SW02(config-line)# login local
+LAB-RA06-A02-SW02(config-line)# transport input ssh
+LAB-RA06-A02-SW02(config-line)#line vty 5 15
+LAB-RA06-A02-SW02(config-line)# login local
+LAB-RA06-A02-SW02(config-line)# transport input ssh
+LAB-RA06-A02-SW02(config-line)#!
+LAB-RA06-A02-SW02(config-line)#ntp server 10.199.64.66
+LAB-RA06-A02-SW02(config)#
+LAB-RA06-A02-SW02(config)#
+LAB-RA06-A02-SW02(config)#! ETHERCHANNEL TO SWITCH 1
+LAB-RA06-A02-SW02(config)#interface range gi1/0/21 - 22
+LAB-RA06-A02-SW02(config-if-range)# channel-group 1 mode on
+Creating a port-channel interface Port-channel 1
+
+LAB-RA06-A02-SW02(config-if-range)# no shutdown
+LAB-RA06-A02-SW02(config-if-range)#exit
+LAB-RA06-A02-SW02(config)#
+LAB-RA06-A02-SW02(config)#interface port-channel1
+LAB-RA06-A02-SW02(config-if)# switchport mode trunk
+LAB-RA06-A02-SW02(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW02(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW02(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW02(config-if)# no shutdown
+LAB-RA06-A02-SW02(config-if)#
+LAB-RA06-A02-SW02(config-if)#! ETHERCHANNEL TO SWITCH 3
+LAB-RA06-A02-SW02(config-if)#interface range gi1/0/23 - 24
+LAB-RA06-A02-SW02(config-if-range)# channel-group 2 mode on
+Creating a port-channel interface Port-channel 2
+
+LAB-RA06-A02-SW02(config-if-range)# no shutdown
+LAB-RA06-A02-SW02(config-if-range)#exit
+LAB-RA06-A02-SW02(config)#
+LAB-RA06-A02-SW02(config)#interface port-channel2
+LAB-RA06-A02-SW02(config-if)# switchport mode trunk
+LAB-RA06-A02-SW02(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW02(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW02(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW02(config-if)# no shutdown
+LAB-RA06-A02-SW02(config-if)#end
+*Jan  1 00:15:30.994: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/20, changed state to down
+*Jan  1 00:15:32.144: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/23, changed state to down
+*Jan  1 00:15:32.156: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/24, changed state to down
+*Jan  1 00:15:32.613: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up
+*Jan  1 00:15:32.893: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan65, changed state to up
+*Jan  1 00:15:33.612: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel1, changed state to up
+*Jan  1 00:15:33.732: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/20, changed state to up
+*Jan  1 00:15:34.146: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
+*Jan  1 00:15:35.199: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:35.200: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:35.200: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/23, changed state to up
+*Jan  1 00:15:35.202: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/24, changed state to up
+*Jan  1 00:15:36.184: %LINK-3-UPDOWN: Interface Port-channel2, changed state to up
+*Jan  1 00:15:36.199: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:36.200: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:37.185: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel2, changed state to up
+*Jan  1 00:15:37.188: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:37.200: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:38.188: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:38.197: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:39.188: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:39.197: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:40.189: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:40.197: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:41.189: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:41.196: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:42.189: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:42.196: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+LAB-RA06-A02-SW02#
+*Jan  1 00:15:43.189: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/23 (99), with Switch GigabitEthernet1/0/23 (1).
+*Jan  1 00:15:43.195: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/24 (99), with Switch GigabitEthernet1/0/24 (1).
+*Jan  1 00:15:44.371: %SYS-5-CONFIG_I: Configured from console by console
+LAB-RA06-A02-SW02#
+
+User Access Verification
+
+Password: 
+Password: 
+Switch>en
+Password: 
+*Mar 18 09:22:32.642: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet1/0/21 (1), with LAB-RA06-A02-SW01.data.labnet.local GigabitEthernet1/0/23 (99).
+Switch#
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#service timestamps debug datetime msec
+Switch(config)#service timestamps log datetime msec
+Switch(config)#service password-encryption
+Switch(config)#!
+Switch(config)#hostname LAB-RA06-A02-SW03
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4         P.TYaVwZNo5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4         iCnm.jQI/dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5         zV50w
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#no ip domain lookup
+LAB-RA06-A02-SW03(config)#ip domain name data.labnet.local
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#login on-success log
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#vlan 65
+LAB-RA06-A02-SW03(config-vlan)# name Management
+LAB-RA06-A02-SW03(config-vlan)#vlan 66
+LAB-RA06-A02-SW03(config-vlan)# name Data_Users
+LAB-RA06-A02-SW03(config-vlan)#vlan 67
+LAB-RA06-A02-SW03(config-vlan)# name Voice_Users
+LAB-RA06-A02-SW03(config-vlan)#vlan 68
+LAB-RA06-A02-SW03(config-vlan)# name Reserved
+LAB-RA06-A02-SW03(config-vlan)#vlan 99
+LAB-RA06-A02-SW03(config-vlan)# name Native
+LAB-RA06-A02-SW03(config-vlan)#!
+LAB-RA06-A02-SW03(config-vlan)#spanning-tree mode rapid-pvst
+Warning: Changing STP mode can disrupt the traffic and make system unstable
+Recommend to change STP mode only during maintenance window
+LAB-RA06-A02-SW03(config)#spanning-tree extend system-id
+LAB-RA06-A02-SW03(config)#spanning-tree vlan 65,66,67,68,99 root secondary
+LAB-RA06-A02-SW03(config)#username admin privilege 15 secret 9 $9$Q1t0hJk90gY$min privilege 15 secret 9 $9$Q1t0hJk90gY2         kk$zLvy5Eege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5EO         syArwVffvret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVffve         VoVQoj/CT1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/CTo         8oOZ4XVuH2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVuHv         gEXEy6
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#interface GigabitEthernet0/0
+LAB-RA06-A02-SW03(config-if)# vrf forwarding Mgmt-vrf
+LAB-RA06-A02-SW03(config-if)# no ip address
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/1
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/1 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/2
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/2 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/3
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/3 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/4
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/4 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/5
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/5 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/6
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/6 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/7
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/7 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/8
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/8 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/9
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/9 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/10
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/10 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/11
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/11 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/12
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/12 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/13
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/13 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/14
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/14 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/15
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/15 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/16
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/16 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/17
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/17 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/18
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/18 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/19
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/19 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/0/20
+LAB-RA06-A02-SW03(config-if)# switchport access vlan 66
+LAB-RA06-A02-SW03(config-if)# switchport mode access
+LAB-RA06-A02-SW03(config-if)# spanning-tree portfast
+%Warning: portfast should only be enabled on ports connected to a single
+ host. Connecting hubs, concentrators, switches, bridges, etc... to this
+ interface  when portfast is enabled, can cause temporary bridging loops.
+ Use with CAUTION
+
+%Portfast has been configured on GigabitEthernet1/0/20 but will only
+ have effect when the interface is in a non-trunking mode.
+LAB-RA06-A02-SW03(config-if)# spanning-tree bpduguard enable
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/1/1
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/1/2
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/1/3
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface GigabitEthernet1/1/4
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface Vlan1
+LAB-RA06-A02-SW03(config-if)# no ip address
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#interface Vlan65
+LAB-RA06-A02-SW03(config-if)# ip address 172.17.6.70 255.255.255.240
+LAB-RA06-A02-SW03(config-if)# no shutdown
+LAB-RA06-A02-SW03(config-if)#!
+LAB-RA06-A02-SW03(config-if)#ip default-gateway 172.17.6.65
+LAB-RA06-A02-SW03(config)#ip forward-protocol nd
+LAB-RA06-A02-SW03(config)#ip ssh version 2
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#!
+LAB-RA06-A02-SW03(config)#control-plane
+LAB-RA06-A02-SW03(config-cp)# service-policy input system-cpp-policy
+LAB-RA06-A02-SW03(config-cp)#!
+LAB-RA06-A02-SW03(config-cp)#!
+LAB-RA06-A02-SW03(config-cp)#line con 0
+LAB-RA06-A02-SW03(config-line)# password 7 1306181C1803082F
+LAB-RA06-A02-SW03(config-line)# login
+LAB-RA06-A02-SW03(config-line)# stopbits 1
+LAB-RA06-A02-SW03(config-line)#line aux 0
+LAB-RA06-A02-SW03(config-line)#line vty 0 4
+LAB-RA06-A02-SW03(config-line)# login local
+LAB-RA06-A02-SW03(config-line)# transport input ssh
+LAB-RA06-A02-SW03(config-line)#line vty 5 15
+LAB-RA06-A02-SW03(config-line)# login local
+LAB-RA06-A02-SW03(config-line)# transport input ssh
+LAB-RA06-A02-SW03(config-line)#!
+LAB-RA06-A02-SW03(config-line)#ntp server 10.199.64.66
+LAB-RA06-A02-SW03(config)#
+LAB-RA06-A02-SW03(config)#! ETHERCHANNEL TO SWITCH 1
+LAB-RA06-A02-SW03(config)#interface range gi1/0/21 - 22
+LAB-RA06-A02-SW03(config-if-range)# channel-group 1 mode on
+Creating a port-channel interface Port-channel 1
+
+LAB-RA06-A02-SW03(config-if-range)# no shutdown
+LAB-RA06-A02-SW03(config-if-range)#exit
+LAB-RA06-A02-SW03(config)#
+LAB-RA06-A02-SW03(config)#show ip interface g0/0/0
+                            ^
+% Invalid input detected at '^' marker.
+
+LAB-RA06-A02-SW03(config)#
+LAB-RA06-A02-SW03(config)#interface port-channel1
+LAB-RA06-A02-SW03(config-if)# switchport mode trunk
+LAB-RA06-A02-SW03(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW03(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW03(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW03(config-if)# no shutdown
+LAB-RA06-A02-SW03(config-if)#
+LAB-RA06-A02-SW03(config-if)#! ETHERCHANNEL TO SWITCH 2
+LAB-RA06-A02-SW03(config-if)#interface range gi1/0/23 - 24
+LAB-RA06-A02-SW03(config-if-range)# channel-group 2 mode on
+Creating a port-channel interface Port-channel 2
+
+LAB-RA06-A02-SW03(config-if-range)# no shutdown
+LAB-RA06-A02-SW03(config-if-range)#exit
+LAB-RA06-A02-SW03(config)#
+LAB-RA06-A02-SW03(config)#interface port-channel2
+LAB-RA06-A02-SW0
+*Mar 18 09:22:51.356: %LINK-3-UPDOWN: Interface Port-channel1, changed state to up
+*Mar 18 09:22:51.649: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan65, changed state to up
+*Mar 18 09:22:51.931: %LINK-3-UPDOWN: Interface Port-channel2, changed state to up
+*Mar 18 09:22:52.357: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel1, changed state to up
+*Mar 18 09:22:52.933: %LINEPROTO-5-UPDOWN: Line protocol on Interface Port-channel2, changed state to up
+*Mar 18 09:22:52.976: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down3(config-if)# switchport mode trunk
+LAB-RA06-A02-SW03(config-if)# switchport trunk native vlan 99
+LAB-RA06-A02-SW03(config-if)# switchport trunk allowed vlan 65-68
+LAB-RA06-A02-SW03(config-if)# spanning-tree link-type point-to-point
+LAB-RA06-A02-SW03(config-if)# no shutdown
+LAB-RA06-A02-SW03(config-if)#end
+LAB-RA06-A02-SW03#
+LAB-RA06-A02-SW03#
+LAB-RA06-A02-SW03#
+LAB-RA06-A02-SW03#
+*Mar 18 09:23:01.322: %SYS-5-CONFIG_I: Configured from console by console
+LAB-RA06-A02-SW03#Mar 18 09:24:01.502: %BOOT-5-OPMODE_LOG: R0/0: binos: System booted in AUTONOMOUS mode
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           Cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software [Amsterdam], ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9_IAS-M), Version 17.3.4a, RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2021 by Cisco Systems, Inc.
+Compiled Tue 20-Jul-21 05:06 by mcpre
+
+
+This software version supports only Smart Licensing as the software licensing mechanism.
+
+
+PLEASE READ THE FOLLOWING TERMS CAREFULLY. INSTALLING THE LICENSE OR
+LICENSE KEY PROVIDED FOR ANY CISCO SOFTWARE PRODUCT, PRODUCT FEATURE,
+AND/OR SUBSEQUENTLY PROVIDED SOFTWARE FEATURES (COLLECTIVELY, THE
+"SOFTWARE"), AND/OR USING SUCH SOFTWARE CONSTITUTES YOUR FULL
+ACCEPTANCE OF THE FOLLOWING TERMS. YOU MUST NOT PROCEED FURTHER IF YOU
+ARE NOT WILLING TO BE BOUND BY ALL THE TERMS SET FORTH HEREIN.
+
+Your use of the Software is subject to the Cisco End User License Agreement
+(EULA) and any relevant supplemental terms (SEULA) found at
+http://www.cisco.com/c/en/us/about/legal/cloud-and-software/software-terms.html.
+
+You hereby acknowledge and agree that certain Software and/or features are
+licensed for a particular term, that the license to such Software and/or
+features is valid only for the applicable term and that such Software and/or
+features may be shut down or otherwise terminated by Cisco after expiration
+of the applicable license term (e.g., 90-day trial period). Cisco reserves
+the right to terminate any such Software feature electronically or by any
+other means available. While Cisco may provide alerts, it is your sole
+responsibility to monitor your usage of any such term Software feature to
+ensure that your systems and networks are prepared for a shutdown of the
+Software feature.
+
+
+
+All TCP AO KDF Tests Pass
+cisco ISR4221/K9 (1RU) processor with 1716271K/3071K bytes of memory.
+Processor board ID FGL2644LGW3
+Router operating mode: Autonomous
+2 Gigabit Ethernet interfaces
+2 Serial interfaces
+32768K bytes of non-volatile configuration memory.
+4194304K bytes of physical memory.
+7086079K bytes of flash memory at bootflash:.
+
+SETUP: new interface GigabitEthernet0/0/0 placed in "shutdown" state
+SETUP: new interface GigabitEthernet0/0/1 placed in "shutdown" state
+SETUP: new interface Serial0/1/0 placed in "shutdown" state
+SETUP: new interface Serial0/1/1 placed in "shutdown" state
+
+
+Press RETURN to get started!
+
+
+*Mar 18 09:24:31.769: %ISR_THROUGHPUT-6-LEVEL: Throughput level has been set to 35000 kbps
+*Mar 18 09:24:37.818: %SMART_LIC-6-AGENT_ENABLED: Smart Agent for Licensing is enabled 
+*Mar 18 09:24:37.955: %SMART_LIC-6-EXPORT_CONTROLLED: Usage of export controlled features is not allowedESG-PM-ACL:[subsys-init] Init ESG-ACL subsystem starting
+
+*Mar 18 09:24:40.823: 
+*Mar 18 09:24:41.373: BFD: brace register success
+*Mar 18 09:24:49.626: %SPANTREE-5-EXTENDED_SYSID: Extended SysId enabled for type vlan
+*Mar 18 09:24:50.235: %CRYPTO_ENGINE-4-CSDL_COMPLIANCE_DISABLED: Cisco PSB security compliance has been disabled
+*Mar 18 09:24:53.364: %LINK-3-UPDOWN: Interface Lsmpi0, changed state to up
+*Mar 18 09:24:53.394: %LINK-3-UPDOWN: Interface EOBC0, changed state to up
+*Mar 18 09:24:53.395: %LINK-3-UPDOWN: Interface LIIN0, changed state to up
+*Mar 18 09:24:53.555: %PNP-6-PNP_DISCOVERY_STARTED: PnP Discovery started
+*Mar 18 09:23:16.714: %IOSXE-3-PLATFORM: R0/0: /usr/sbin/pkg_to_tree: Failed to parse the key record 0. (28)Invalid key type in key record.
+*Mar 18 09:23:25.553: %IOSXE-3-PLATFORM: R0/0: /usr/sbin/pkg_to_tree: Mkdir failed for /tmp/sw/cc/0 - File exists
+*Mar 18 09:24:03.905: %BOOT-5-OPMODE_LOG: R0/0: binos: System booted in AUTONOMOUS mode
+*Mar 18 09:24:17.304: %CMRP_PFU-6-FANASSY_INSERTED: R0/0: cmand: Fan Assembly is inserted.
+*Mar 18 09:23:16.714: %IOSXE-3-PLATFORM: F0: /usr/sbin/pkg_to_tree: Failed to parse the key record 0. (28)Invalid key type in key record.
+*Mar 18 09:23:25.553: %IOSXE-3-PLATFORM: F0: /usr/sbin/pkg_to_tree: Mkdir failed for /tmp/sw/cc/0 - File exists
+*Mar 18 09:24:03.905: %BOOT-5-OPMODE_LOG: F0: binos: System booted in AUTONOMOUS mode
+*Mar 18 09:24:17.304: %CMRP_PFU-6-FANASSY_INSERTED: F0: cmand: Fan Assembly is inserted.
+*Mar 18 09:23:16.714: %IOSXE-3-PLATFORM: SIP0: /usr/sbin/pkg_to_tree: Failed to parse the key record 0. (28)Invalid key type in key record.
+*Mar 18 09:23:25.553: %IOSXE-3-PLATFORM: SIP0: /usr/sbin/pkg_to_tree: Mkdir failed for /tmp/sw/cc/0 - File exists
+*Mar 18 09:24:03.905: %BOOT-5-OPMODE_LOG: SIP0: binos: System booted in AUTONOMOUS mode
+*Mar 18 09:24:17.304: %CMRP_PFU-6-FANASSY_INSERTED: SIP0: cmand: Fan Assembly is inserted.
+*Mar 18 09:24:38.543: %CMLIB-6-THROUGHPUT_VALUE: R0/0: cmand: Throughput license found, throughput set to 35000 kbps
+*Mar 18 09:24:38.543: %CMLIB-6-THROUGHPUT_VALUE: F0: cmand: Throughput license found, throughput set to 35000 kbps
+*Mar 18 09:24:38.543: %CMLIB-6-THROUGHPUT_VALUE: SIP0: cmand: Throughput license found, throughput set to 35000 kbps
+*Mar 18 09:24:54.661: %LINEPROTO-5-UPDOWN: Line protocol on Interface Lsmpi0, changed state to up
+*Mar 18 09:24:54.661: %LINEPROTO-5-UPDOWN: Line protocol on Interface EOBC0, changed state to up
+*Mar 18 09:24:54.662: %LINEPROTO-5-UPDOWN: Line protocol on Interface LIIN0, changed state to up
+*Mar 18 09:24:55.713: %ONEP_BASE-6-SS_ENABLED: ONEP: Service set Base was enabled by Default
+*Mar 18 09:24:57.738: %SYS-7-NVRAM_INIT_WAIT_TIME: Waited 0 seconds for NVRAM to be available
+*Mar 18 09:24:58.517: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named TP-self-signed-972780170 has been generated or imported by crypto config
+*Mar 18 09:24:58.529: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named LAB-RA06-C02-R02.data.labnet.local has been generated or imported by crypto config
+*Mar 18 09:24:58.533: %SYS-6-PRIVCFG_DECRYPT_SUCCESS: Successfully apply the private config file
+*Mar 18 09:24:58.598: %PKI-6-TRUSTPOINT_CREATE: Trustpoint: SLA-TrustPoint created succesfully
+*Mar 18 09:24:59.041: %SYS-5-CONFIG_I: Configured from memory by console
+*Mar 18 09:24:59.349: %IOSXE_OIR-6-REMSPA: SPA removed from subslot 0/0, interfaces disabled
+*Mar 18 09:24:59.349: %IOSXE_OIR-6-REMSPA: SPA removed from subslot 0/1, interfaces disabled
+*Mar 18 09:24:59.353: %SPA_OIR-6-OFFLINECARD: SPA (ISR4221-2x1GE) offline in subslot 0/0
+*Mar 18 09:24:59.357: %SPA_OIR-6-OFFLINECARD: SPA (NIM-2T) offline in subslot 0/1
+*Mar 18 09:24:59.556: %IOSXE_OIR-6-INSCARD: Card (fp) inserted in slot F0
+*Mar 18 09:24:59.556: %IOSXE_OIR-6-ONLINECARD: Card (fp) online in slot F0
+*Mar 18 09:24:59.683: %IOSXE_OIR-6-INSCARD: Card (cc) inserted in slot 0
+*Mar 18 09:24:59.683: %IOSXE_OIR-6-ONLINECARD: Card (cc) online in slot 0
+*Mar 18 09:24:59.880: %IOSXE_OIR-6-INSSPA: SPA inserted in subslot 0/0
+*Mar 18 09:24:59.881: %IOSXE_OIR-6-INSSPA: SPA inserted in subslot 0/1
+*Mar 18 09:25:00.055: %SYS-5-RESTART: System restarted --
+Cisco IOS Software [Amsterdam], ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9_IAS-M), Version 17.3.4a, RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2021 by Cisco Systems, Inc.
+Compiled Tue 20-Jul-21 05:06 by mcpre
+*Mar 18 09:25:00.085: %SSH-5-ENABLED: SSH 1.99 has been enabled
+*Mar 18 09:25:00.095: %HA_EM-6-LOG: eem-labnet-prevention-script7: Procedure to prevent console lockout
+*Mar 18 09:25:00.232: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+*Mar 18 09:25:00.232: %CRYPTO-6-GDOI_ON_OFF: GDOI is OFF
+*Mar 18 09:25:00.701: %HA_EM-6-LOG: eem-labnet-prevention-script7: Startup-config found, console and enable defaults set
+*Mar 18 09:25:01.372: %SYS-5-CONFIG_I: Configured from console by guardian on vty1 (EEM:eem-labnet-prevention-script7)
+*Mar 18 09:25:04.301: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named TP-self-signed-972780170.server has been generated or imported by crypto-engine
+*Mar 18 09:25:06.983: %PNP-6-PNP_BEST_UDI_UPDATE: Best UDI [PID:ISR4221/K9,VID:V05,SN:FGL2644LGW3] identified via (entity-mibs)
+*Mar 18 09:25:06.983: %PNP-6-PNP_CDP_UPDATE: Device UDI [PID:ISR4221/K9,VID:V05,SN:FGL2644LGW3] identified for CDP
+*Mar 18 09:25:06.984: %PNP-6-PNP_DISCOVERY_STOPPED: PnP Discovery stopped (Startup Config Present)
+*Mar 18 09:25:09.758: %SYS-5-CONFIG_P: Configured programmatically by process EPM CREATE DEFAULT CWA URL ACL from console as console
+*Mar 18 09:25:10.654: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+*Mar 18 09:25:10.654: %CRYPTO-6-GDOI_ON_OFF: GDOI is OFF
+*Mar 18 09:25:11.013: %SYS-6-PRIVCFG_ENCRYPT_SUCCESS: Successfully encrypted private config file
+*Mar 18 09:25:11.136: %SPA_OIR-6-ONLINECARD: SPA (ISR4221-2x1GE) online in subslot 0/0
+*Mar 18 09:25:11.426: %PKI-6-TRUSTPOINT_CREATE: Trustpoint: CISCO_IDEVID_SUDI created succesfully
+*Mar 18 09:25:11.445: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named CISCO_IDEVID_SUDI has been generated or imported by pki-sudi
+*Mar 18 09:25:11.481: %PKI-6-TRUSTPOINT_CREATE: Trustpoint: CISCO_IDEVID_SUDI0 created succesfully
+*Mar 18 09:25:11.489: %PKI-2-NON_AUTHORITATIVE_CLOCK: PKI functions can not be initialized until an authoritative time source, like NTP, can be obtained.
+*Mar 18 09:25:11.490: %PKI-6-TRUSTPOINT_CREATE: Trustpoint: TP-self-signed-972780170 created succesfully
+
+User Access Verification
+
+Password: 
+*Mar 18 09:25:11.553: %PKI-4-NOCONFIGAUTOSAVE: Configuration was modified.  Issue "write memory" to save new IOS PKI configuration
+Password: 
+Password: 
+% Bad passwords
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Router con0 is now available
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+User Access Verification
+
+Password: 
+Password: 
+Router>en
+Password: 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#service timestamps debug datetime msec
+Router(config)#service timestamps log datetime msec
+Router(config)#service password-encryption
+Router(config)#!
+Router(config)#hostname LAB-RA06-A02-R01
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P         .TYaVwZN4o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4i         Cnm.jQI/5dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5z         V50w
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#no ip domain lookup
+LAB-RA06-A02-R01(config)#ip domain name data.labnet.local
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#login on-success log
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#track 1 interface g0/0/1 line-protocol
+LAB-RA06-A02-R01(config-track)#!
+LAB-RA06-A02-R01(config-track)#interface g0/0/0
+LAB-RA06-A02-R01(config-if)# no ip address
+LAB-RA06-A02-R01(config-if)# no shutdown
+LAB-RA06-A02-R01(config-if)# no standby 1 ip
+LAB-RA06-A02-R01(config-if)# no standby 1 priority
+LAB-RA06-A02-R01(config-if)# no standby 1 preempt
+LAB-RA06-A02-R01(config-if)# no standby 1 track 1 decrement 30
+LAB-RA06-A02-R01(config-if)#
+LAB-RA06-A02-R01(config-if)#interface g0/0/0.65
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 65
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.66 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 1 ip 172.17.6.65
+LAB-RA06-A02-R01(config-subif)# standby 1 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 1 preempt
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.66
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 66
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.82 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 2 ip 172.17.6.81
+LAB-RA06-A02-R01(config-subif)# standby 2 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 2 preempt
+LAB-RA06-A02-R01(config-subif)# standby 2 track 1 decrement 30
+LAB-RA06-A02-R01(config-subif)# ip helper-address 10.199.64.66
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.67
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 67
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.98 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 3 ip 172.17.6.97
+LAB-RA06-A02-R01(config-subif)# standby 3 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 3 preempt
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.68
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 68
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.114 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 4 ip 172.17.6.113
+LAB-RA06-A02-R01(config-subif)# standby 4 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 4 preempt
+LAB-RA06-A02-R01(config-subif)#interface gigabitEthernet 0/0/0.99
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 99 native 
+LAB-RA06-A02-R01(config-subif)#interface g0/0/1
+LAB-RA06-A02-R01(config-if)# ip address 10.199.65.112 255.255.255.224
+LAB-RA06-A02-R01(config-if)# no shutdown
+LAB-RA06-A02-R01(config-if)#!
+LAB-RA06-A02-R01(config-if)#username admin privilege 15 secret 9 $9$Q1t0hJk90$min privilege 15 secret 9 $9$Q1t0hJk90g         Y2kk$zLvyege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5         EOsyArwVfret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVff         veVoVQoj/1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/C         To8oOZ4XV2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVu         HvgEXEy6
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#ip ssh version 2
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#line vty 0 4
+LAB-RA06-A02-R01(config-line)# login local
+LAB-RA06-A02-R01(config-line)# transport input ssh
+LAB-RA06-A02-R01(config-line)#!
+LAB-RA06-A02-R01(config-line)#ip route 0.0.0.0 0.0.0.0 10.199.65.100
+LAB-RA06-A02-R01(config)#end
+LAB-RA06-A02-R01#
+*Mar 18 09:25:30.472: %SYS-5-CONFIG_I: Configured from console by console
+*Mar 18 09:25:31.324: %CALL_HOME-6-CALL_HOME_ENABLED: Call-home is enabled by Smart Agent for Licensing.
+*Mar 18 09:25:32.178: %SMART_LIC-6-REPORTING_REQUIRED: A Usage report acknowledgement will be required in 0 days.
+*Mar 18 09:25:35.444: %TRACK-6-STATE: 1 interface Gi0/0/1 line-protocol Down -> Up
+*Mar 18 09:25:35.473: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up
+*Mar 18 09:25:36.473: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up
+*Mar 18 09:25:36.482: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/1, changed state to up
+LAB-RA06-A02-R01#
+LAB-RA06-A02-R01#
+LAB-RA06-A02-R01#
+*Mar 18 09:25:37.483: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/1, changed state to upconf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+LAB-RA06-A02-R01(config)#service timestamps debug datetime msec
+LAB-RA06-A02-R01(config)#service timestamps log datetime msec
+LAB-RA06-A02-R01(config)#service password-encryption
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#hostname LAB-RA06-A02-R02
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P         .TYaVwZN4o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4i         Cnm.jQI/5dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5z         V50w
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#no ip domain lookup
+LAB-RA06-A02-R02(config)#ip domain name data.labnet.local
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#login on-success log
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#track 1 interface g0/0/1 line-protocol
+LAB-RA06-A02-R02(config-track)#!
+LAB-RA06-A02-R02(config-track)#interface g0/0/0
+LAB-RA06-A02-R02(config-if)# no ip address
+LAB-RA06-A02-R02(config-if)# no shutdown
+LAB-RA06-A02-R02(config-if)# no standby 1 ip
+LAB-RA06-A02-R02(config-if)# no standby 1 priority
+LAB-RA06-A02-R02(config-if)# no standby 1 preempt
+LAB-RA06-A02-R02(config-if)# no standby 1 track 1 decrement 30
+LAB-RA06-A02-R02(config-if)#
+LAB-RA06-A02-R02(config-if)#interface g0/0/0.65
+LAB-RA06-A02-R02(config-subif)# encapsulation dot1Q 65
+LAB-RA06-A02-R02(config-subif)# ip address 172.17.6.67 255.255.255.240
+LAB-RA06-A02-R02(config-subif)# standby 1 ip 172.17.6.65
+LAB-RA06-A02-R02(config-subif)# standby 1 priority 100
+LAB-RA06-A02-R02(config-subif)# standby 1 preempt
+LAB-RA06-A02-R02(config-subif)#
+LAB-RA06-A02-R02(config-subif)#interface g0/0/0.66
+LAB-RA06-A02-R02(config-subif)# encapsulation dot1Q 66
+LAB-RA06-A02-R02(config-subif)# ip address 172.17.6.83 255.255.255.240
+LAB-RA06-A02-R02(config-subif)# standby 2 ip 172.17.6.81
+LAB-RA06-A02-R02(config-subif)# standby 2 priority 100
+LAB-RA06-A02-R02(config-subif)# standby 2 preempt
+LAB-RA06-A02-R02(config-subif)# standby 2 track 1 decrement 30
+LAB-RA06-A02-R02(config-subif)# ip helper-address 10.199.64.66
+LAB-RA06-A02-R02(config-subif)#
+LAB-RA06-A02-R02(config-subif)#interface g0/0/0.67
+LAB-RA06-A02-R02(config-subif)# encapsulation dot1Q 67
+LAB-RA06-A02-R02(config-subif)# ip address 172.17.6.99 255.255.255.240
+LAB-RA06-A02-R02(config-subif)# standby 3 ip 172.17.6.97
+LAB-RA06-A02-R02(config-subif)# standby 3 priority 100
+LAB-RA06-A02-R02(config-subif)# standby 3 preempt
+LAB-RA06-A02-R02(config-subif)#
+LAB-RA06-A02-R02(config-subif)#interface g0/0/0.68
+LAB-RA06-A02-R02(config-subif)# encapsulation dot1Q 68
+LAB-RA06-A02-R02(config-subif)# ip address 172.17.6.115 255.255.255.240
+LAB-RA06-A02-R02(config-subif)# standby 4 ip 172.17.6.113
+LAB-RA06-A02-R02(config-subif)# standby 4 priority 100
+LAB-RA06-A02-R02(config-subif)# standby 4 preempt
+LAB-RA06-A02-R02(config-subif)#interface gigabitEthernet 0/0/0.99
+LAB-RA06-A02-R02(config-subif)# encapsulation dot1Q 99 native 
+LAB-RA06-A02-R02(config-subif)#!
+LAB-RA06-A02-R02(config-subif)#interface g0/0/1
+LAB-RA06-A02-R02(config-if)# ip address 10.199.65.212 255.255.255.224
+LAB-RA06-A02-R02(config-if)# no shutdown
+LAB-RA06-A02-R02(config-if)#!
+LAB-RA06-A02-R02(config-if)#username admin privilege 15 secret 9 $9$Q1t0hJk90$min privilege 15 secret 9 $9$Q1t0hJk90g         Y2kk$zLvyege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5         EOsyArwVfret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVff         veVoVQoj/1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/C         To8oOZ4XV2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVu         HvgEXEy6
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#ip ssh version 2
+LAB-RA06-A02-R02(config)#!
+LAB-RA06-A02-R02(config)#line vty 0 4
+LAB-RA06-A02-R02(config-line)# login local
+LAB-RA06-A02-R02(config-line)# transport input ssh
+LAB-RA06-A02-R02(config-line)#!
+LAB-RA06-A02-R02(config-line)#ip route 0.0.0.0 0.0.0.0 10.199.65.200
+LAB-RA06-A02-R02(config)#end
+LAB-RA06-A02-R02#wr
+*Mar 18 09:25:43.071: %SYS-5-CONFIG_I: Configured from console by console
+Building configuration...
+[OK]
+LAB-RA06-A02-R02#
+LAB-RA06-A02-R02#
+*Mar 18 09:25:53.469: %SYS-6-PRIVCFG_ENCRYPT_SUCCESS: Successfully encrypted private config file
+*Mar 18 09:25:57.194: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.68 Grp 4 state Standby -> Active
+*Mar 18 09:25:59.229: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.65 Grp 1 state Standby -> Active
+*Mar 18 09:25:59.600: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.66 Grp 2 state Standby -> Active
+*Mar 18 09:26:08.853: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.67 Grp 3 state Standby -> Active
+LAB-RA06-A02-R02#
+
+User Access Verification
+
+Password: 
+Router>en
+Password: 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#service timestamps debug datetime msec
+Router(config)#service timestamps log datetime msec
+Router(config)#service password-encryption
+Router(config)#!
+Router(config)#hostname LAB-RA06-A02-R01
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4$et 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P         .TYaVwZN4o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4i         Cnm.jQI/5dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5z         V50w
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#no ip domain lookup
+LAB-RA06-A02-R01(config)#ip domain name data.labnet.local
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#login on-success log
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#track 1 interface g0/0/1 line-protocol
+LAB-RA06-A02-R01(config-track)#!
+LAB-RA06-A02-R01(config-track)#interface g0/0/0
+LAB-RA06-A02-R01(config-if)# no ip address
+LAB-RA06-A02-R01(config-if)# no shutdown
+LAB-RA06-A02-R01(config-if)# no standby 1 ip
+LAB-RA06-A02-R01(config-if)# no standby 1 priority
+LAB-RA06-A02-R01(config-if)# no standby 1 preempt
+LAB-RA06-A02-R01(config-if)# no standby 1 track 1 decrement 30
+LAB-RA06-A02-R01(config-if)#
+LAB-RA06-A02-R01(config-if)#interface g0/0/0.65
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 65
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.66 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 1 ip 172.17.6.65
+LAB-RA06-A02-R01(config-subif)# standby 1 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 1 preempt
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.66
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 66
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.82 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 2 ip 172.17.6.81
+LAB-RA06-A02-R01(config-subif)# standby 2 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 2 preempt
+LAB-RA06-A02-R01(config-subif)# standby 2 track 1 decrement 30
+LAB-RA06-A02-R01(config-subif)# ip helper-address 10.199.64.66
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.67
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 67
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.98 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 3 ip 172.17.6.97
+LAB-RA06-A02-R01(config-subif)# standby 3 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 3 preempt
+LAB-RA06-A02-R01(config-subif)#
+LAB-RA06-A02-R01(config-subif)#interface g0/0/0.68
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 68
+LAB-RA06-A02-R01(config-subif)# ip address 172.17.6.114 255.255.255.240
+LAB-RA06-A02-R01(config-subif)# standby 4 ip 172.17.6.113
+LAB-RA06-A02-R01(config-subif)# standby 4 priority 110
+LAB-RA06-A02-R01(config-subif)# standby 4 preempt
+LAB-RA06-A02-R01(config-subif)#interface gigabitEthernet 0/0/0.99
+LAB-RA06-A02-R01(config-subif)# encapsulation dot1Q 99 native 
+LAB-RA06-A02-R01(config-subif)#interface g0/0/1
+LAB-RA06-A02-R01(config-if)# ip address 10.199.65.112 255.255.255.224
+LAB-RA06-A02-R01(config-if)# no shutdown
+LAB-RA06-A02-R01(config-if)#!
+LAB-RA06-A02-R01(config-if)#username admin privilege 15 secret 9 $9$Q1t0hJk90$min privilege 15 secret 9 $9$Q1t0hJk90g         Y2kk$zLvyege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5         EOsyArwVfret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVff         veVoVQoj/1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/C         To8oOZ4XV2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVu         HvgEXEy6
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#ip ssh version 2
+LAB-RA06-A02-R01(config)#!
+LAB-RA06-A02-R01(config)#line vty 0 4
+LAB-RA06-A02-R01(config-line)# login local
+LAB-RA06-A02-R01(config-line)# transport input ssh
+LAB-RA06-A02-R01(config-line)#!
+LAB-RA06-A02-R01(config-line)#ip route 0.0.0.0 0.0.0.0 10.199.65.100
+LAB-RA06-A02-R01(config)#end
+LAB-RA06-A02-R01#
+*Mar 18 09:26:26.660: %SYS-5-CONFIG_I: Configured from console by console
+LAB-RA06-A02-R01#
+*Mar 18 09:26:30.430: %TRACK-6-STATE: 1 interface Gi0/0/1 line-protocol Down -> Up
+*Mar 18 09:26:31.663: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/1, changed state to up
+*Mar 18 09:26:32.661: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up
+LAB-RA06-A02-R01#
+*Mar 18 09:26:32.673: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/1, changed state to up
+*Mar 18 09:26:33.661: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up
+LAB-RA06-A02-R01#
+*Mar 18 09:26:54.560: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.66 Grp 2 state Standby -> Active
+*Mar 18 09:26:56.093: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.65 Grp 1 state Standby -> Active
+*Mar 18 09:26:56.577: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.67 Grp 3 state Standby -> Active
+*Mar 18 09:27:03.229: %SMART_LIC-3-COMM_FAILED: Communications failure with the Cisco Smart License Utility (CSLU) : Unable to resolve server hostname/domain name 
+*Mar 18 09:27:05.159: %HSRP-5-STATECHANGE: GigabitEthernet0/0/0.68 Grp 4 state Standby -> Active
+*Mar 18 09:27:24.350: %SPA_OIR-6-ONLINECARD: SPA (NIM-2T) online in subslot 0/1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LAB-RA06-A02-R01 con0 is now available
+
+
+
+
+
+Press RETURN to get started.
+
+
+*Mar 18 09:36:36.246: %SYS-6-TTY_EXPIRE_TIMER: (exec timer expired, tty 0 (0.0.0.0)), user 
+
+User Access Verification
+
+Password: 
+Password: 
+LAB-RA06-A02-SW01>en
+Password: 
+LAB-RA06-A02-SW01#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+LAB-RA06-A02-SW01(config)#Management          vlan 67
+LAB-RA06-A02-SW01(config-vlan)# name Access_Points
+LAB-RA06-A02-SW01(config-vlan)#
+
+User Access Verification
+
+Password: 
+LAB-RA06-A02-SW02>en
+Password: 
+LAB-RA06-A02-SW02#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+LAB-RA06-A02-SW02(config)#vlan 67
+LAB-RA06-A02-SW02(config-vlan)# name Access_Points
+LAB-RA06-A02-SW02(config-vlan)#
+
+User Access Verification
+
+Password: 
+Password: 
+LAB-RA06-A02-SW03>en
+Password: 
+LAB-RA06-A02-SW03#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+LAB-RA06-A02-SW03(config)#vlan 67
+LAB-RA06-A02-SW03(config-vlan)# name Access_Points$
+LAB-RA06-A02-SW03(config-vlan)#vlan 67
+LAB-RA06-A02-SW03(config-vlan)# name Access_Points
+LAB-RA06-A02-SW03(config-vlan)#

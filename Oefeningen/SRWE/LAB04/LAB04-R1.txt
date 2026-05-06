@@ -1,0 +1,79 @@
+conf t
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname LAB-RA06-A02-R01
+!
+enable secret 9 $9$U/o5/rdpzBo3dU$ezKkrcpnnK.Bs2JAg4P.TYaVwZN4iCnm.jQI/5zV50w
+!
+no ip domain lookup
+ip domain name data.labnet.local
+!
+login on-success log
+!
+track 1 interface g0/0/1 line-protocol
+!
+interface g0/0/0
+ no ip address
+ no shutdown
+ no standby 1 ip
+ no standby 1 priority
+ no standby 1 preempt
+ no standby 1 track 1 decrement 30
+
+interface g0/0/0.65
+ encapsulation dot1Q 65
+ ip address 172.17.6.66 255.255.255.240
+ standby 1 ip 172.17.6.65
+ standby 1 priority 110
+ standby 1 preempt
+
+interface g0/0/0.66
+ encapsulation dot1Q 66
+ ip address 172.17.6.82 255.255.255.240
+ standby 2 ip 172.17.6.81
+ standby 2 priority 110
+ standby 2 preempt
+ standby 2 track 1 decrement 30
+ ip helper-address 10.199.64.66
+
+interface g0/0/0.67
+ encapsulation dot1Q 67
+ ip address 172.17.6.98 255.255.255.240
+ standby 3 ip 172.17.6.97
+ standby 3 priority 110
+ standby 3 preempt
+
+interface g0/0/0.68
+ encapsulation dot1Q 68
+ ip address 172.17.6.114 255.255.255.240
+ standby 4 ip 172.17.6.113
+ standby 4 priority 110
+ standby 4 preempt
+interface gigabitEthernet 0/0/0.99
+ encapsulation dot1Q 99 native 
+interface g0/0/1
+ ip address 10.199.65.112 255.255.255.224
+ no shutdown
+!
+!
+ip dhcp excluded-address 172.17.6.97 172.17.6.99
+ip dhcp pool VLAN67-APS
+ network 172.17.6.96 255.255.255.240
+ default-router 172.17.6.97
+ dns-server 10.199.64.66
+ option 43 hex f1040AC74064
+ domain-name data.labnet.local
+!
+!
+username admin privilege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVuHvgEXEy6
+!
+ip ssh version 2
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+ip route 0.0.0.0 0.0.0.0 10.199.65.100
+end
