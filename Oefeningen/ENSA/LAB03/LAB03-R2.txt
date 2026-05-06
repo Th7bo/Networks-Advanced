@@ -78,3 +78,15 @@ router ospf 10
  passive-interface g0/0/0.20
  passive-interface g0/0/0.30
  passive-interface g0/0/0.40
+
+no ip access-list extended allowIN
+ip access-list extended allowIN
+ remark Sta SSH toe van management host LAB-HA-A-PC02
+ permit tcp host 10.199.64.137 any eq 22
+ remark Sta SSH toe van management subnet RA07-L (collega)
+ permit tcp 172.16.7.0 0.0.0.15 any eq 22
+ remark Blokkeer de rest en log gefaalde pogingen
+ deny ip any any log
+!
+line vty 0 4
+ access-class allowIN in

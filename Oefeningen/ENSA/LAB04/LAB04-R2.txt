@@ -78,3 +78,34 @@ router ospf 10
  passive-interface g0/0/0.20
  passive-interface g0/0/0.30
  passive-interface g0/0/0.40
+
+no ip access-list extended allowIN
+ip access-list extended allowIN
+ remark Sta SSH toe van management host LAB-HA-A-PC02
+ permit tcp host 10.199.64.137 any eq 22
+ remark Sta SSH toe van management subnet RA07-L (collega)
+ permit tcp 172.16.7.0 0.0.0.15 any eq 22
+ remark Blokkeer de rest en log gefaalde pogingen
+ deny ip any any log
+!
+line vty 0 4
+ access-class allowIN in
+
+ip access-list standard SNMP-ACL
+ remark Sta alleen Zabbix server toe
+ permit host 10.199.64.67
+ deny any log
+!
+snmp-server community SNMP-RO RO SNMP-ACL
+snmp-server community SNMP-RW RW SNMP-ACL
+snmp-server location LAB-RA06-A02
+snmp-server contact admin@labnet.local
+!
+snmp-server host 10.199.64.67 version 2c SNMP-RO
+!
+snmp-server enable traps
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps config
+snmp-server enable traps syslog
+!
+snmp-server trap-source GigabitEthernet0/0/0.10
