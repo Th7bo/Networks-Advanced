@@ -1,3 +1,11 @@
+! ============================================================================
+! LAB-RA06-A02-R02 — Final config voor Lab 4
+! 
+! Lab 2B basis + Lab 4 (SNMP, Syslog)
+! Actieve config: SNMPv3 + Syslog
+! R2 = HSRP standby (priority 100)
+! ============================================================================
+
 conf t
 service timestamps debug datetime msec
 service timestamps log datetime msec
@@ -12,8 +20,14 @@ ip domain name data.labnet.local
 !
 login on-success log
 !
+! ============================================================================
+! HSRP TRACKING — Lab 2B
+! ============================================================================
 track 1 interface g0/0/1 line-protocol
 !
+! ============================================================================
+! INTERFACES — Lab 2B
+! ============================================================================
 interface g0/0/0
  no ip address
  no shutdown
@@ -61,15 +75,19 @@ interface g0/0/1
  ip ospf 10 area 0
  no shutdown
 !
-!
+! ============================================================================
+! USERS & SSH — Lab 2B
+! ============================================================================
 username admin privilege 15 secret 9 $9$Q1t0hJk90gY2kk$zLvy5EOsyArwVffveVoVQoj/CTo8oOZ4XVuHvgEXEy6
-!
 ip ssh version 2
 !
 line vty 0 4
  login local
  transport input ssh
 !
+! ============================================================================
+! OSPF — Lab 2B
+! ============================================================================
 router ospf 10
  router-id 10.199.66.164
  network 172.16.6.128 0.0.0.63 area 0
@@ -78,8 +96,10 @@ router ospf 10
  passive-interface g0/0/0.20
  passive-interface g0/0/0.30
  passive-interface g0/0/0.40
-
-no ip access-list extended allowIN
+!
+! ============================================================================
+! SSH ACL (VTY) — Lab 3
+! ============================================================================
 ip access-list extended allowIN
  remark Sta SSH toe van management host LAB-HA-A-PC02
  permit tcp host 10.199.64.137 any eq 22
@@ -90,22 +110,91 @@ ip access-list extended allowIN
 !
 line vty 0 4
  access-class allowIN in
-
-ip access-list standard SNMP-ACL
- remark Sta alleen Zabbix server toe
- permit host 10.199.64.67
- deny any log
 !
-snmp-server community SNMP-RO RO SNMP-ACL
-snmp-server community SNMP-RW RW SNMP-ACL
+! ============================================================================
+! SYSLOG — Lab 4 Part 2
+! ============================================================================
+logging host 10.199.64.134
+logging trap informational
+logging source-interface GigabitEthernet0/0/0.10
+logging history informational
+!
+! ============================================================================
+! SNMPv3 — Lab 4 Part 4 (ACTIEVE config)
+! ============================================================================
 snmp-server location LAB-RA06-A02
 snmp-server contact admin@labnet.local
 !
-snmp-server host 10.199.64.67 version 2c SNMP-RO
+snmp-server group SNMP-V3-GROUP v3 priv
+snmp-server user zabbix-user SNMP-V3-GROUP v3 auth sha AuthPass123 priv aes 128 PrivPass123
+!
+snmp-server host 10.199.64.67 version 3 priv zabbix-user
+!
+snmp-server trap-source GigabitEthernet0/0/0.10
 !
 snmp-server enable traps
 snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
 snmp-server enable traps config
 snmp-server enable traps syslog
 !
-snmp-server trap-source GigabitEthernet0/0/0.10
+end
+
+
+! ============================================================================
+! ============================================================================
+! ALTERNATIEVE / OUDE CONFIGS — voor referentie (uncomment om te activeren)
+! ============================================================================
+! ============================================================================
+
+
+! ----------------------------------------------------------------------------
+! Lab 4 Part 1 — Basis SNMPv2c
+! ----------------------------------------------------------------------------
+!
+conf t
+ip access-list standard SNMP-ACL
+remark Sta alleen Zabbix server toe
+ permit host 10.199.64.67
+ deny any log
+!
+snmp-server community SNMP-RO RO SNMP-ACL
+snmp-server community SNMP-RW RW SNMP-ACL
+!
+snmp-server host 10.199.64.67 version 2c SNMP-RO
+end
+
+
+! ----------------------------------------------------------------------------
+! Lab 4 Part 3 — Secure SNMP (aparte communities)
+! ----------------------------------------------------------------------------
+!
+conf t
+ip access-list standard SNMP-RO-ACL
+ permit host 10.199.64.67
+ deny any log
+!
+ip access-list standard SNMP-RW-ACL
+ permit host 10.199.64.67
+ deny any log
+! !
+snmp-server community SNMP-RO RO SNMP-RO-ACL
+snmp-server community SNMP-RW RW SNMP-RW-ACL
+! !
+snmp-server host 10.199.64.67 version 2c SNMP-TRAP
+end
+
+
+! ----------------------------------------------------------------------------
+! SNMPv2c -> SNMPv3 MIGRATIE — cleanup voor v2c naar v3 wijziging
+! ----------------------------------------------------------------------------
+!
+conf t
+no snmp-server host 10.199.64.67 version 2c SNMP-TRAP
+no snmp-server host 10.199.64.67 informs version 2c SNMP-TRAP
+no snmp-server host 10.199.64.67 version 2c SNMP-RO
+no snmp-server community SNMP-RO
+no snmp-server community SNMP-RW
+no ip access-list standard SNMP-RO-ACL
+no ip access-list standard SNMP-RW-ACL
+no ip access-list standard SNMP-ACL
+end
